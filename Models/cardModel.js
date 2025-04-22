@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const cardSchema = new mongoose.Schema({
-    id: {Number, unique: true},
+    id: Number,
     name: String,
     rarity: String,
     level: Number,
@@ -10,4 +10,4 @@ const cardSchema = new mongoose.Schema({
     }
 })
 
-export default mongoose.model("Card", cardSchema);
+module.exports = mongoose.model("Card", cardSchema);

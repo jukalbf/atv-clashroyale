@@ -1,15 +1,18 @@
-import mongoose from "mongoose";
-import cardSchema from "./cardModel";
+const mongoose = require("mongoose");
+const cardSchema = require("./cardModel");
 
-export const playerSchema = new mongoose.Schema({
+const playerSchema = new mongoose.Schema({
     name: String,
-    tag: String,
+    tag: {
+        type: String,
+        unique: true,
+    },
     trophies: Number,
     bestTrophies: Number,
     battleCount: Number,
     wins: Number,
     losses: Number,
-    cards: [cardSchema],
+    cards: [{type: mongoose.Schema.Types.ObjectId, ref: "Card"}],
 })
 
-export default mongoose.model("Player", playerSchema);
+module.exports = mongoose.model("Player", playerSchema);

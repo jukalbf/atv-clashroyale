@@ -1,9 +1,9 @@
-import mongoose, {mongo} from "mongoose";
-import playerSchema from "./playerModel";
+const mongoose = require("mongoose");
+const playerSchema = require("./playerModel");
 
 const battlelogSchema = new mongoose.Schema({
-    opponent: [playerSchema],
-    team: [playerSchema],
+    opponent: [{type: mongoose.Schema.Types.ObjectId, ref: "Player"}],
+    team: [{type: mongoose.Schema.types.ObjectId, ref: "Player"}],
     newTowersDestroyed: Number,
     prevTowersDestroyed: Number,
     isLadderTournament: Boolean,
@@ -20,4 +20,4 @@ const battlelogSchema = new mongoose.Schema({
     }
 });
 
-export default mongoose.model("Battlelog", battlelogSchema);
+module.exports = mongoose.model("Battlelog", battlelogSchema);

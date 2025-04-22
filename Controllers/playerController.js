@@ -1,6 +1,7 @@
 const dotenv = require("dotenv");
 const client = require("../db");
 const axios = require("axios");
+const playerModel = require("../Models/playerModel");
 
 dotenv.config();
 
@@ -39,7 +40,7 @@ async function postPlayer(req, res) {
             }
         });
 
-        const playerInsert = await collection.insertOne(result.data);
+        const playerInsert = await collection.insertOne(new playerModel(result.data));
 
         res.status(200).json({player: result.data});
     } catch(err) {
