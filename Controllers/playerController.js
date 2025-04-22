@@ -31,7 +31,7 @@ async function postPlayer(req, res) {
 
         await client.connect();
         const db = client.db("clash-royale-project");
-        const collection = db.collection("battlelogs");
+        const collection = db.collection("players");
 
         const result = await axios.get(`${API}/players/${tagEncoded}`, {
             headers: {
