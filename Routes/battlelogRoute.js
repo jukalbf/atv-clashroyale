@@ -1,9 +1,9 @@
-import {Router} from "express";
-import battlelogController from "../Controllers/battlelogController";
+const {Router} = require("express");
+const battlelogController = require("../Controllers/battlelogController");
 
 const router = Router();
 
-router.get("/", battlelogController.getBattlelog);
-router.post("/", battlelogController.postBattlelog);
+router.get("/", battlelogController.getAllBattlelogs);
+router.post("/:tag", battlelogController.postBattlelogs);
 
 module.exports = router;
