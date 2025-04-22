@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
+import mongoose, {mongo} from "mongoose";
 import playerSchema from "./playerModel";
 
-const battlelogModel = new mongoose.Schema({
+const battlelogSchema = new mongoose.Schema({
     opponent: [playerSchema],
     team: [playerSchema],
     newTowersDestroyed: Number,
@@ -19,3 +19,5 @@ const battlelogModel = new mongoose.Schema({
         }
     }
 });
+
+export default mongoose.model("Battlelog", battlelogSchema);
