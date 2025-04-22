@@ -1,8 +1,9 @@
 const express = require("express");
 const {MongoClient} = require("mongodb");
+const playerRoutes = require("./Routes/playerRoute");
+const cardsRoute = require("./Routes/cardsRoute");
+const battlelogRoute = require("./Routes/battlelogRoute");
 const dotenv = require("dotenv");
-const playerController = require("./Controllers/playerController");
-const battlelogController = require("./Controllers/battlelogController");
 const cors = require("cors");
 
 dotenv.config();
@@ -19,10 +20,9 @@ const port = 8000;
 
 const client = new MongoClient(MONGO_URI);
 
-app.get("/player", playerController.getPlayers);
-app.post("/player/:tag", playerController.postPlayer);
-app.get("/player/battlelog", battlelogController.getAllBattlelogs);
-app.post("/player/battlelog/:tag", battlelogController.postBattlelogs);
+app.use("/player", playerRoutes);
+app.use("/battlelog", battlelogRoute);
+app.use("/cards", cardsRoute);
 
 app.listen(port, () => {
     console.log(`Rodando em: http://localhost:${port}`);
