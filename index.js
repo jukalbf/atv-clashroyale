@@ -9,8 +9,6 @@ const cors = require("cors");
 dotenv.config();
 
 const MONGO_URI = process.env.MONGO_URI;
-const TOKEN = process.env.TOKEN;
-const API = process.env.API;
 
 const app = express();
 app.use(express.json());
